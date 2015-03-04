@@ -34,6 +34,7 @@ public class PetServiceImpl implements PetService {
     public static final String SALE_PATH = "sale/";
     public static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";
 
+
     @Autowired
     private PetDao petDao;
     @Autowired
@@ -43,6 +44,17 @@ public class PetServiceImpl implements PetService {
     public long count() {
         return petDao.count();
     }
+
+    @Override
+    public List<PetDto> getPetsByCategory(int categoryId) {
+        List<PetDto> resultList = new ArrayList<>();
+        for (Pet p :petDao.getByCategoryId(categoryId)){
+            resultList.add(new PetDto(p));
+        }
+        return resultList;
+    }
+
+
 
     @Override
     public List<PetDto> getAllPetsDtos() {
@@ -121,7 +133,7 @@ public class PetServiceImpl implements PetService {
 
             Pet newPet = new Pet();
             newPet.setName(name);
-            newPet.setUrl(url);
+            newPet.setUrl(SITE_PATH + url);
             newPet.setDescription(description);
             newPet.setPrice(priceStr);
             newPet.setDate(date);
@@ -168,7 +180,7 @@ public class PetServiceImpl implements PetService {
                 newCategory.setUrl(url);
                 newCategory.setEnable(true);
                 if (!url.equals("Домашний-скот/")){
-                    //encoding poblem
+                    //encoding poblem :(
                     categories.add(newCategory);
                 }
             }

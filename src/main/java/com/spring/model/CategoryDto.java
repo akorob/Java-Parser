@@ -4,9 +4,6 @@ import com.spring.persistence.domain.Category;
 
 import java.io.Serializable;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
 public class CategoryDto implements Serializable {
     private int id;
     private String name;

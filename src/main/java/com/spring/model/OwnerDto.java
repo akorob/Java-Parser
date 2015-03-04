@@ -4,9 +4,6 @@ import com.spring.persistence.domain.Owner;
 
 import java.io.Serializable;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
 public class OwnerDto implements Serializable {
     private int id;
     private String name;

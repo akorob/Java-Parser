@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
+
 @Component
 public class PetDaoImpl implements PetDao {
 

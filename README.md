@@ -1,1 +1,1 @@
-Create mysql db guests befor start.
+Create mysql db java_html_parser befor start. Db dump in SQL folder.

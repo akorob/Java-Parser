@@ -5,9 +5,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
 @Entity
 @Table( name = "pets" )
 public class Pet implements Serializable {

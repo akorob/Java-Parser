@@ -6,9 +6,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
 public class PetDto implements Serializable {
     private int id;
     private String name;
@@ -28,8 +25,9 @@ public class PetDto implements Serializable {
         this.description = pet.getDescription();
         this.date = pet.getDate();
         this.category = new CategoryDto(pet.getCategory());
-        this.owner = new OwnerDto(pet.getOwner());
+       // this.owner = new OwnerDto(pet.getOwner());
         this.enable = pet.isEnable();
+        this.url = pet.getUrl();
     }
 
     public int getId() {

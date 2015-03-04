@@ -7,7 +7,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<bean id="entityManagerFactory"	class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="ledshop-unit" />
+		<property name="persistenceUnitName" value="mu-unit" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

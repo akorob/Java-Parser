@@ -6,12 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by dev on 04.03.2015.
- */
 public interface PetService {
-    List<PetDto> getAllPetsDtos();
     long count();
+
+    List<PetDto> getPetsByCategory(int categoryId);
+
+    List<PetDto> getAllPetsDtos();
 
     @Transactional
     int parseSite() throws IOException;

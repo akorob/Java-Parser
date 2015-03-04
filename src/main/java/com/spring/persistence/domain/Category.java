@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-/**
- * Created by Andrey on 03.03.2015.
- */
 @Entity
 @Table( name = "categories" )
 public class Category implements Serializable {

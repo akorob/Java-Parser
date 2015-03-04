@@ -2,54 +2,42 @@
     <div class="panel-heading">Results list - PETS</div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-sm-6">
-                <div style="padding-bottom: 10px;" class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-filter"></i></span>
-                    <input type="text" ng-model-options="{ debounce: 300 }" class="form-control" data-ng-model="filter">
-                            <span class="input-group-addon btn btn-default" data-ng-disabled="filter.length == 0" data-ng-click="filter = ''">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </span>
-                </div>
-            </div>
             <div class="col-sm-4">
                 <select class="form-control"  data-ng-model="catId"
                         data-ng-options="c.id as c.name for c in categories" data-ng-change="selectCategory(catId)">
                     <option value=''>Выберите категорию</option>
                 </select>
             </div>
+            </br></br></br>
+            <div class="col-sm-12" data-ng-show="pets.length">
+                <table class="table table-bordered table-hover table-condensed dataTable">
+                    <thead>
+                    <tr>
+                        <th  class="col-sm-1 text-center">Имя</th>
+                        <th  class="col-sm-8 text-center">Описание</th>
+                        <th  class="col-sm-1 text-center">Категория</th>
+                        <th  class="col-sm-1 text-center">Цена</th>
+                        <th  class="col-sm-1 text-center">Дата</th>
+                    </tr>
+                    </thead>
+                    <tr data-ng-repeat="p in pets">
+                        <td class="text-center" style="word-wrap: break-word;min-width: 160px;max-width: 160px;">
+                            <a href="{{p.url}}"  target="_blank" >{{p.name}}</a>
+                        </td>
+                        <td class="text-center">{{ p.description }}</td>
+                        <td class="text-center">{{ p.category.name }}</td>
+                        <td class="text-center">{{ p.price }}</td>
+                        <td class="text-center">{{ p.date | date: "dd.MM.yyyy" }}</td>
+                    </tr>
+                </table>
+                <div class="col-sm-12 text-center">
+                    <pagination total-items="totalItems" ng-model="currentPage" max-size="9" rotate="false"
+                                items-per-page="itemsPerPage" ng-change="pageChanged()"></pagination>
+                </div>
+
+            </div>
         </div>
-        <div data-ng-show="!products.length && catId"><b>Продукты отсутствуют</b></div>
-        <div class="table-responsive" data-ng-show="products.length">
-            <table class="table table-bordered table-hover table-condensed dataTable">
-                <thead>
-                <tr>
-                    <th data-ng-click="orderBy='id';direction = !direction" class="col-lg-1 text-center sorting">ID</th>
-                    <th data-ng-click="orderBy='sku';direction = !direction" class="col-lg-2 text-center sorting">P/N</th>
-                    <th data-ng-click="orderBy='name';direction = !direction" class="col-lg-3 text-center sorting">Название</th>
-                    <th data-ng-click="orderBy='categoryName';direction = !direction" class="col-lg-2 text-center sorting">Категория</th>
-                    <th data-ng-click="orderBy='price';direction = !direction" class="col-lg-1 text-center sorting">Цена</th>
-                    <!--    <th data-ng-click="orderBy='position';direction = !direction" class="col-lg-1 text-center sorting">Поз №</th>-->
-                    <th data-ng-click="orderBy='enable';direction = !direction" class="col-lg-1 text-center sorting">Активен</th>
-                    <th data-ng-click="orderBy='inStock';direction = !direction" class="col-lg-1 text-center sorting">В наличии</th>
-                    <th data-ng-click="orderBy='date';direction = !direction" class="col-lg-1 text-center sorting">Создан</th>
-                    <th class="col-lg-1 text-center">Управление</th>
-                </tr>
-                </thead>
-                <tr data-ng-repeat="p in products | orderBy:orderBy:direction | filter:filterRule">
-                    <td class="text-center">{{ p.id}}</td>
-                    <td class="text-center">{{ p.sku }}</td>
-                    <td class="text-center">{{ p.name }}</td>
-                    <td class="text-center">{{ p.categoryName }}</td>
-                    <td class="text-center">{{ p.price }}</td>
-                    <!--   <td class="text-center">{{ p.position }}</td>-->
-                    <td class="text-center">{{ p.enable ? 'Да' : 'Нет' }}</td>
-                    <td class="text-center">{{ p.inStock ? 'Да' : 'Нет' }}</td>
-                    <td class="text-center">{{ p.date | date: "HH:mm dd.MM.yyyy" }}</td>
-                    <td class="text-center">
-                        <a href="/admin#/products/{{p.id}}" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-edit"></i></a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+
     </div>
 </div>

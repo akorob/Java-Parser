@@ -16,9 +16,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Created by Andrey on 30.12.2014.
- */
+
 @RestController
 @RequestMapping("/api/pet")
 public class PetController {
@@ -28,7 +26,6 @@ public class PetController {
 
     @RequestMapping( method = RequestMethod.GET)
     public ResponseEntity getAllPets() {
-
         return new ResponseEntity(petService.getAllPetsDtos(), HttpStatus.OK);
     }
 
@@ -46,11 +43,17 @@ public class PetController {
     }
 
     @RequestMapping( method = RequestMethod.GET, params={"param"})
-    public ResponseEntity getOptionById( @RequestParam("param") String param) {
+    public ResponseEntity count( @RequestParam("param") String param) {
         if (param.equals("getCount")){
             return new ResponseEntity(petService.count(), HttpStatus.OK);
         }
 
         return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+    }
+
+
+    @RequestMapping(value="{id}" , method = RequestMethod.GET)
+    public ResponseEntity getUserById(@PathVariable(value = "id") int categoryId) {
+       return new ResponseEntity(petService.getPetsByCategory(categoryId), HttpStatus.OK);
     }
 }
