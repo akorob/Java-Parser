@@ -16,6 +16,7 @@ public class Owner implements Serializable {
     private String address;
     private String phone;
     private Collection<Pet> pets;
+    private boolean enable;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,5 +67,13 @@ public class Owner implements Serializable {
 
     public void setPets(Collection<Pet> pets) {
         this.pets = pets;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

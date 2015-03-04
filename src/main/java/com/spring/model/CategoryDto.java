@@ -11,6 +11,7 @@ public class CategoryDto implements Serializable {
     private int id;
     private String name;
     private String url;
+    private boolean enable;
 
     public CategoryDto (){}
 
@@ -18,6 +19,7 @@ public class CategoryDto implements Serializable {
         this.id = category.getId();
         this.name = category.getName();
         this.url = category.getUrl();
+        this.enable = category.isEnable();
     }
 
     public int getId() {
@@ -42,5 +44,13 @@ public class CategoryDto implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

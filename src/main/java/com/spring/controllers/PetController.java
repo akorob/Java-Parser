@@ -7,18 +7,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by Andrey on 30.12.2014.
@@ -32,8 +28,24 @@ public class PetController {
 
     @RequestMapping( method = RequestMethod.GET)
     public ResponseEntity getAllPets() {
+
         return new ResponseEntity(petService.getAllPetsDtos(), HttpStatus.OK);
     }
+
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity addNewUser(@RequestBody String path) {
+        try {
+            int count = petService.parseSite(path);
+            return new ResponseEntity(count, HttpStatus.OK);
+        } catch (IOException e){
+            e.printStackTrace();
+            return new ResponseEntity(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
 
     @RequestMapping(value="/test", method = RequestMethod.GET)
     public ResponseEntity getTestData() {

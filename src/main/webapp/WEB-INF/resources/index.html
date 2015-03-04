@@ -25,10 +25,11 @@
                 <div class="page-header">
                     <div class="col-"></div>
                     <h1>Java HTML parser: <small>lets try to parse www.zoo-zoo.ru</small></h1>
-                    <button class="btn btn-primary btn-lg" data-ng-click="startParsing()">Do It Now!</button>
+                    <button data-ng-disabled="inProcess" class="btn btn-primary btn-lg" data-ng-click="startParsing()">Do It Now!</button>
                     <span class="pull-right">
-                        <a href="/pets" class="btn btn-default ">Show pets(0)</a>
-<!--                        <a href="/categories" class="btn btn-default ">Show categories</a>
+                        <a href="/pets" data-ng-disabled="inProcess" class="btn btn-default" >
+                            Show results ({{data.found}})</a>
+<!--                    <a href="/categories" class="btn btn-default ">Show categories</a>
                         <a href="/owners" class="btn btn-default ">Show owners</a>-->
                     </span>
 

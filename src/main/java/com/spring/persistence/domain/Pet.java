@@ -18,6 +18,7 @@ public class Pet implements Serializable {
     private Date date;
     private Owner owner;
     private Category category;
+    private boolean enable;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,5 +81,13 @@ public class Pet implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

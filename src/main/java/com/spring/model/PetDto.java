@@ -17,6 +17,7 @@ public class PetDto implements Serializable {
     private Date date;
     private CategoryDto category;
     private OwnerDto owner;
+    private boolean enable;
 
     public PetDto (){}
     public PetDto (Pet pet){
@@ -27,6 +28,7 @@ public class PetDto implements Serializable {
         this.date = pet.getDate();
         this.category = new CategoryDto(pet.getCategory());
         this.owner = new OwnerDto(pet.getOwner());
+        this.enable = pet.isEnable();
     }
 
     public int getId() {
@@ -83,5 +85,13 @@ public class PetDto implements Serializable {
 
     public void setOwner(OwnerDto owner) {
         this.owner = owner;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

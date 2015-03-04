@@ -14,6 +14,7 @@ public class Category implements Serializable {
     private String name;
     private String url;
     private Collection<Pet> pets;
+    private boolean enable;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,5 +49,13 @@ public class Category implements Serializable {
 
     public void setPets(Collection<Pet> pets) {
         this.pets = pets;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

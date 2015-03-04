@@ -13,6 +13,7 @@ public class OwnerDto implements Serializable {
     private String region;
     private String address;
     private String phone;
+    private boolean enable;
 
     public  OwnerDto(){}
 
@@ -22,6 +23,7 @@ public class OwnerDto implements Serializable {
         this.region = owner.getRegion();
         this.address = owner.getAddress();
         this.phone = owner.getPhone();
+        this.enable = owner.isEnable();
     }
 
     public int getId() {
@@ -62,5 +64,13 @@ public class OwnerDto implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

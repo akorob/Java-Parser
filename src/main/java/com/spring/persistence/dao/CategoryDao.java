@@ -11,4 +11,5 @@ public interface CategoryDao {
     List<Category> getAllCategories();
 
     int store(Category item);
+    void clear();
 }
