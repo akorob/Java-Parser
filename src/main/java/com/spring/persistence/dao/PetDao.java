@@ -11,4 +11,10 @@ public interface PetDao {
     List<Pet> getAllPets();
 
     int store(Pet item);
+
+    long count();
+
+    int clear();
+
+    List<Pet> getByCategoryId(int CategoryId);
 }

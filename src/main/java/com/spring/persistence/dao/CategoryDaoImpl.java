@@ -29,8 +29,8 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public void clear() {
-        em.createQuery("DELETE  FROM Category c").executeUpdate();;
+    public int clear() {
+        return em.createQuery("DELETE  FROM Category c").executeUpdate();
     }
 
 

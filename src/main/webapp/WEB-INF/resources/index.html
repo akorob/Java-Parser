@@ -24,11 +24,11 @@
             <div class="col-sm-12" data-ng-controller="NavController">
                 <div class="page-header">
                     <div class="col-"></div>
-                    <h1>Java HTML parser: <small>lets try to parse www.zoo-zoo.ru</small></h1>
+                    <h1>Java HTML parser: <small>lets parse www.zoo-zoo.ru for pets</small></h1>
                     <button data-ng-disabled="inProcess" class="btn btn-primary btn-lg" data-ng-click="startParsing()">Do It Now!</button>
                     <span class="pull-right">
                         <a href="/pets" data-ng-disabled="inProcess" class="btn btn-default" >
-                            Show results ({{data.found}})</a>
+                            Show results (<span data-ng-bind="data.found"></span>)</a>
 <!--                    <a href="/categories" class="btn btn-default ">Show categories</a>
                         <a href="/owners" class="btn btn-default ">Show owners</a>-->
                     </span>

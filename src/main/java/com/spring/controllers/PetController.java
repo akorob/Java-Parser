@@ -34,9 +34,9 @@ public class PetController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addNewUser(@RequestBody String path) {
+    public ResponseEntity startNewParsing() {
         try {
-            int count = petService.parseSite(path);
+            int count = petService.parseSite();
             return new ResponseEntity(count, HttpStatus.OK);
         } catch (IOException e){
             e.printStackTrace();
@@ -45,12 +45,12 @@ public class PetController {
 
     }
 
+    @RequestMapping( method = RequestMethod.GET, params={"param"})
+    public ResponseEntity getOptionById( @RequestParam("param") String param) {
+        if (param.equals("getCount")){
+            return new ResponseEntity(petService.count(), HttpStatus.OK);
+        }
 
-
-    @RequestMapping(value="/test", method = RequestMethod.GET)
-    public ResponseEntity getTestData() {
-
-
-        return new ResponseEntity(null, HttpStatus.OK);
+        return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
     }
 }

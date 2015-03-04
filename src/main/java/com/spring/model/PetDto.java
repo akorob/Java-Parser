@@ -12,7 +12,8 @@ import java.util.Date;
 public class PetDto implements Serializable {
     private int id;
     private String name;
-    private BigDecimal price;
+    private String url;
+    private String price;
     private String description;
     private Date date;
     private CategoryDto category;
@@ -47,11 +48,11 @@ public class PetDto implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -93,5 +94,13 @@ public class PetDto implements Serializable {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

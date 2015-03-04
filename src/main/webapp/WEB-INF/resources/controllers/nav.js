@@ -4,12 +4,21 @@ app.controller("NavController", ["$scope", "$rootScope", "$location","Restangula
         log("NavController");
         $scope.inProcess = false;
         $scope.data = {found:0};
-        var site = "http://www.zoo-zoo.ru/"
 
-        var pet = rest.all('pet');
+        var pet = rest.one('pet');
+
+
+
+        pet.get({param:"getCount"}).then(function(data){
+            $scope.data.found = data;
+        });
+
+
+
         $scope.startParsing = function(){
+            $location.path("/");
             $scope.inProcess = true;
-            pet.customPOST(site).then(function(data){
+            pet.customPOST().then(function(data){
                 $scope.data.found = data;
                 $scope.inProcess = false;
             },

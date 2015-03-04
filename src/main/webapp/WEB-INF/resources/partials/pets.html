@@ -36,7 +36,7 @@
                 </tr>
                 </thead>
                 <tr data-ng-repeat="p in products | orderBy:orderBy:direction | filter:filterRule">
-                    <td class="text-center">{{ p.id | numberFixedLen:5 }}</td>
+                    <td class="text-center">{{ p.id}}</td>
                     <td class="text-center">{{ p.sku }}</td>
                     <td class="text-center">{{ p.name }}</td>
                     <td class="text-center">{{ p.categoryName }}</td>

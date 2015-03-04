@@ -11,7 +11,8 @@ import java.util.List;
  */
 public interface PetService {
     List<PetDto> getAllPetsDtos();
+    long count();
 
     @Transactional
-    int parseSite(String path) throws IOException;
+    int parseSite() throws IOException;
 }

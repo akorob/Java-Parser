@@ -18,11 +18,27 @@ public class PetDaoImpl implements PetDao {
     private EntityManager em;
 
 
+    @Override
+    public List<Pet> getByCategoryId(int CategoryId) {
+        List<Pet> list = em.createQuery(
+                "SELECT p FROM Pet p WHERE p.enable = true AND p.category.id = :id", Pet.class)
+                .setParameter("id", CategoryId).getResultList();
+        return list;
+    }
+
+
+    @Override
+    public long count() {
+        long count = (long)em.createQuery(
+                "SELECT COUNT (p) FROM Pet p WHERE p.enable = true").getSingleResult();
+
+        return count;
+    }
 
     @Override
     public List<Pet> getAllPets() {
         List<Pet> list = em.createQuery(
-                "SELECT p FROM Pet p", Pet.class).getResultList();
+                "SELECT p FROM Pet p WHERE p.enable = true", Pet.class).getResultList();
         return list;
     }
 
@@ -32,4 +48,10 @@ public class PetDaoImpl implements PetDao {
         int id= em.merge(item).getId();
         return id;
     }
+
+    @Override
+    public int clear() {
+        return em.createQuery("DELETE  FROM Pet p").executeUpdate();
+    }
+
 }
